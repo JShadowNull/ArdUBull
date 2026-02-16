@@ -61,6 +61,30 @@ const PWM_MIN: u16 = 1000;
 const PWM_MAX: u16 = 2000;
 ```
 
+## Running as a System Service
+
+To run ArdUBull automatically on boot:
+
+```bash
+# 1. Edit the service file with your paths
+nano ardubull.service
+# Update YOUR_USERNAME and /path/to/ardubull
+
+# 2. Copy service file to systemd
+sudo cp ardubull.service /etc/systemd/system/
+
+# 3. Enable and start the service
+sudo systemctl daemon-reload
+sudo systemctl enable ardubull
+sudo systemctl start ardubull
+
+# 4. Check status
+sudo systemctl status ardubull
+
+# 5. View logs
+sudo journalctl -u ardubull -f
+```
+
 ## Usage with ArduPilot SITL
 
 ```bash
